@@ -200,6 +200,15 @@ img.icon, img.image { display: block; image-rendering: -webkit-optimize-contrast
   text-overflow: ellipsis;
 }
 
+/* Utility: explicitly prevent truncation (for title/button labels that must not ellipsize) */
+.no-truncate {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+  /* Allow intrinsic content width when inside constrained absolute boxes */
+  min-width: max-content;
+}
+
 /* Note: The layout follows absolute positioning as per Figma export.
    For responsiveness we apply non-destructive scale transforms to the root container.
    This preserves pixel baseline while fitting on common breakpoints (320/768/1024/1440). */
