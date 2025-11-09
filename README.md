@@ -1,1 +1,3 @@
-# streamview-ott-platform-93789
+# Project Repository
+
+This is the initial README file for the project.
