@@ -1,1 +1,186 @@
-/* Screen CSS import removed; styles are now loaded globally via public/index.html */
+/* Screen-level overrides and enhancements for HomePage (screen_2:68)
+   - Keep global CSS links intact (public includes assets/common.css and assets/home-page-2-68.css).
+   - This file refines spacing, typography fidelity, animations, hover states, and responsiveness.
+*/
+
+/* 1) Baseline: mirror critical tokens to ensure availability even if global CSS loads later */
+:root {
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-quick: 180ms;
+  --duration-standard: 300ms;
+
+  /* Shadow for interactive cards */
+  --shadow-card: 0 6px 18px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.12);
+  --shadow-card-soft: 0 8px 22px rgba(0, 0, 0, 0.18), 0 6px 12px rgba(0, 0, 0, 0.10);
+}
+
+/* Utility to preserve aspect ratios and prevent layout shift */
+.aspect {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.aspect > img,
+.aspect > picture,
+.aspect > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 2) Root container fidelity and responsive behavior */
+.screen-root {
+  position: relative;
+  width: 1280px;
+  height: 1024px;
+  margin: 0 auto;
+  background-color: var(--style-0-bg, #000);
+  overflow: hidden;
+
+  /* subtle elevation to match polished look on light page bg */
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.22);
+}
+
+/* Allow the page to center and scale slightly on smaller viewports without breaking baseline grid */
+@media (max-width: 1440px) {
+  .screen-root { transform: scale(0.98); transform-origin: top center; }
+}
+@media (max-width: 1024px) {
+  .screen-root { transform: scale(0.85); }
+}
+@media (max-width: 768px) {
+  .screen-root { transform: scale(0.72); }
+}
+@media (max-width: 480px) {
+  .screen-root { transform: scale(0.62); }
+}
+
+/* 3) Absolute helpers and rounding to match tokens */
+.abs { position: absolute; }
+.round-47 { border-radius: var(--style-3-radius, 47px); }
+.round-42 { border-radius: var(--style-5-radius, 42px); }
+.round-35 { border-radius: var(--style-8-radius, 35px); }
+.circle { border-radius: 50%; overflow: hidden; }
+
+.btn-white-80 { background: var(--style-9-bg, #fff); opacity: var(--style-9-opacity, 0.8); }
+.bg-white { background: var(--color-ffffff, #fff); }
+.bg-red { background: var(--color-d40000, #d40000); }
+.bg-gray { background: var(--color-d9d9d9, #d9d9d9); }
+.bg-686 { background: var(--color-686868, #686868); }
+.line-vertical { width: 2px; background-color: var(--style-14-border-color, #d40000); opacity: var(--style-14-opacity, 0.8); }
+
+/* 4) Typography refinements: ensure letter-spacing and line-height fidelity */
+.ds-typo-9  { letter-spacing: 0; line-height: 16.9432px; }
+.ds-typo-10 { letter-spacing: 0; line-height: 16.9432px; }
+.ds-typo-11 { letter-spacing: 0; line-height: 22px; }
+.ds-typo-12 { letter-spacing: 0; line-height: 58.0909px; }
+.ds-typo-13 { letter-spacing: 0; line-height: 21.7841px; }
+.ds-typo-14 { letter-spacing: 0; line-height: 21.7841px; }
+.ds-typo-15 { letter-spacing: 0; line-height: 19.3636px; }
+.ds-typo-16 { letter-spacing: 0; line-height: 21.7841px; }
+.ds-typo-17 { letter-spacing: 0; line-height: 38.7273px; }
+.ds-typo-18 { letter-spacing: 0; line-height: 15.733px; }
+
+/* 5) Image rendering crispness for icons and hero */
+img.icon, img.image { display: block; image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+
+/* 6) Entrance animations with prefers-reduced-motion safeguards */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translate3d(0, 12px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Provide hooks: hero, header, primary sections */
+.hero-animate,
+.header-animate,
+.section-animate {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-animate.appear   { animation: fadeSlideUp var(--duration-standard) var(--ease-standard) forwards; }
+  .header-animate.appear { animation: fadeSlideUp calc(var(--duration-standard) + 60ms) var(--ease-standard) forwards; }
+  .section-animate.appear{ animation: fadeSlideUp calc(var(--duration-standard) + 120ms) var(--ease-standard) forwards; }
+}
+
+/* 7) Interactive cards/thumbs: hover/focus states */
+.thumb,
+.btn-white-80,
+.round-47,
+.round-42 {
+  transition: transform var(--duration-quick) var(--ease-emphasized), box-shadow var(--duration-quick) var(--ease-emphasized), opacity var(--duration-quick) linear, background-color var(--duration-quick) linear;
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.thumb:hover,
+.thumb:focus-visible,
+.btn-white-80:hover,
+.btn-white-80:focus-visible,
+.round-47:hover,
+.round-47:focus-visible,
+.round-42:hover,
+.round-42:focus-visible {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-card);
+  outline: none;
+}
+
+/* Provide a slightly softer resting shadow to thumbnails that look like cards */
+.thumb {
+  box-shadow: var(--shadow-card-soft);
+}
+
+/* Maintain clear focus visibility for accessibility */
+.thumb:focus-visible,
+.btn-white-80:focus-visible,
+.round-47:focus-visible,
+.round-42:focus-visible {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.55), var(--shadow-card);
+}
+
+/* 8) Spacing refinements: ensure consistent gaps around key text lines */
+.abs.ds-typo-12 { /* Title */
+  padding: 0 2px;
+}
+.abs.ds-typo-11 { /* Description */
+  padding-right: 4px;
+}
+
+/* 9) Reserve aspect ratios for major imagery to avoid layout shift */
+.img-hero {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1280px; height: 622px;
+}
+.img-thumb {
+  width: 200px; height: 120px;
+}
+
+/* Add class-based mapping for thumbnails (applied via DOM or using existing absolute boxes) */
+.abs.thumb {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 10) Minor polish for top-right controls and nav cluster */
+.abs.btn-white-80 {
+  border-radius: 8px;
+}
+
+/* 11) Responsive safeguards to retain pixel baseline without breaking layout */
+@media (max-width: 1440px) {
+  .img-hero { width: 1280px; height: 622px; }
+  .img-thumb { width: 200px; height: 120px; }
+}
+
+/* Note: The layout follows absolute positioning as per Figma export.
+   For responsiveness we apply non-destructive scale transforms to the root container.
+   This preserves pixel baseline while fitting on common breakpoints (320/768/1024/1440). */
