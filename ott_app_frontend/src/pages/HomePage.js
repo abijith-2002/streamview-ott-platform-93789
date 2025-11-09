@@ -86,7 +86,7 @@ function HomePage() {
       </div>
 
       {/* Title */}
-      <div className="abs ds-typo-12 header-animate" style={{ left: 23, top: 192, width: 344, height: 46, zIndex: 9 }}>
+      <div className="abs ds-typo-12 header-animate no-wrap" style={{ left: 23, top: 192, width: 344, height: 46, zIndex: 9 }}>
         Peaky Blinders
       </div>
 
@@ -108,7 +108,7 @@ function HomePage() {
         <button className="abs round-42 bg-gray" style={{ left: 0, top: 0, width: 140, height: 46, border: 'none', cursor: 'pointer' }}>
           {/* full-size button for a11y hit area */}
         </button>
-        <div className="abs ds-typo-14" style={{ left: 14, top: 12, width: 112, height: 22 }}>
+        <div className="abs ds-typo-14 no-wrap" style={{ left: 14, top: 12, width: 112, height: 22 }}>
           Watch Trailer
         </div>
       </div>

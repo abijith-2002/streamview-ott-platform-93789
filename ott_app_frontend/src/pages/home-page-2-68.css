@@ -192,6 +192,14 @@ img.icon, img.image { display: block; image-rendering: -webkit-optimize-contrast
   .img-thumb { width: 200px; height: 120px; }
 }
 
+/* Utility: force single-line text without wrapping */
+.no-wrap {
+  white-space: nowrap;
+  /* Safe overflow handling if a width is constrained; keeps text intact */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Note: The layout follows absolute positioning as per Figma export.
    For responsiveness we apply non-destructive scale transforms to the root container.
    This preserves pixel baseline while fitting on common breakpoints (320/768/1024/1440). */
