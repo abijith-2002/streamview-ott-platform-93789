@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import SplashScreen from './components/SplashScreen';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 
 // PUBLIC_INTERFACE
 function App() {
@@ -33,7 +33,7 @@ function App() {
           {/* Initial load shows splash */}
           <Route path="/" element={<SplashScreen />} />
           {/* After 3s we navigate to /home */}
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<HomePage />} />
           {/* Fallback to home for unknown routes */}
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>

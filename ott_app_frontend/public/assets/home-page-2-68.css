@@ -1,0 +1,47 @@
+@import url('./common.css');
+
+body {
+  margin: 0;
+  background: var(--color-000000);
+}
+
+.screen-root {
+  position: relative;
+  width: 1280px;
+  height: 1024px;
+  background-color: var(--style-0-bg);
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.abs { position: absolute; }
+
+.round-47 { border-radius: var(--style-3-radius); }
+.round-42 { border-radius: var(--style-5-radius); }
+.round-35 { border-radius: var(--style-8-radius); }
+
+.btn-white-80 { background: var(--style-9-bg); opacity: var(--style-9-opacity); }
+.bg-white { background: var(--color-ffffff); }
+.bg-red { background: var(--color-d40000); }
+.bg-gray { background: var(--color-d9d9d9); }
+.bg-686 { background: var(--color-686868); }
+
+.icon-crisp { image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+
+.line-vertical {
+  width: 2px;
+  background-color: var(--style-14-border-color);
+  opacity: var(--style-14-opacity);
+}
+
+.circle {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+img.icon, img.image {
+  display: block;
+}
+
+/* Z-index stacking via order; we set z-index incrementally using nth-child in HTML order if necessary.
+   For clarity, we attach explicit z-index on elements inline via style attribute when needed. */
