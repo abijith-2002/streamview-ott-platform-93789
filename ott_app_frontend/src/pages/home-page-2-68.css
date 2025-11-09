@@ -95,12 +95,23 @@ img.icon, img.image { display: block; image-rendering: -webkit-optimize-contrast
 }
 
 /* Provide hooks: hero, header, primary sections */
+/* Default to visible to avoid blank content if animations are disabled or appear class not added yet */
 .hero-animate,
 .header-animate,
 .section-animate {
-  opacity: 0;
-  transform: translate3d(0, 12px, 0);
+  opacity: 1;
+  transform: none;
   will-change: opacity, transform;
+}
+
+/* When using animation, start hidden and slide up only if motion allowed and appear class is present */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-animate,
+  .header-animate,
+  .section-animate {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

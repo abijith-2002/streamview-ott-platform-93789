@@ -5,8 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Use a neutral light background so the dark screen-root stands out and content is visible during load */
   background-color: #F3F4F6; /* Ocean Professional background */
   color: #111827; /* Ocean Professional text */
+  min-height: 100vh;
 }
 
 code {
